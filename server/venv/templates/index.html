@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WebSocket Chat</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.0.1/socket.io.js"></script>
+    <script>
+        const socket = io();
+
+        socket.on('connect', () => {
+            console.log("Connected to WebSocket server");
+        });
+
+        socket.on('receive_message', (data) => {
+            console.log("Message received:", data);
+            const messagesContainer = document.getElementById("messages");
+            messagesContainer.innerHTML += `<p><strong>${data.username}:</strong> ${data.message}</p>`;
+        });
+
+        const sendMessage = () => {
+            const messageInput = document.getElementById("messageInput");
+            const usernameInput = document.getElementById("usernameInput");
+            const message = messageInput.value;
+            const username = usernameInput.value;
+
+            socket.emit('send_message', { username, message });
+            messageInput.value = '';  // Clear the input
+        };
+    </script>
+</head>
+<body>
+    <h1>Welcome to the WebSocket Chat Application!</h1>
+    <input type="text" id="usernameInput" placeholder="Enter your username" />
+    <input type="text" id="messageInput" placeholder="Enter your message" />
+    <button onclick="sendMessage()">Send</button>
+
+    <div id="messages"></div>
+</body>
+</html>

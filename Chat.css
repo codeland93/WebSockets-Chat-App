@@ -1,0 +1,19 @@
+.chat-container {
+  padding: 10px;
+}
+
+.message-self {
+  text-align: right;
+  background-color: #daf1da;
+  padding: 5px;
+  border-radius: 10px;
+  margin-bottom: 5px;
+}
+
+.message-other {
+  text-align: left;
+  background-color: #f1dada;
+  padding: 5px;
+  border-radius: 10px;
+  margin-bottom: 5px;
+}

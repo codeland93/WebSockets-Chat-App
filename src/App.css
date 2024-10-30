@@ -1,0 +1,21 @@
+.app {
+  font-family: Arial, sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+.login, .input-container {
+  display: flex;
+  gap: 10px;
+}
+
+.chat-container {
+  border: 1px solid #ddd;
+  width: 300px;
+  max-height: 400px;
+  overflow-y: auto;
+  margin-bottom: 10px;
+}
